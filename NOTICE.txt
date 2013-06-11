@@ -1,0 +1,7 @@
+MapService dependent on:
+--------------------------------
+http://leafletjs.com/
+
+MapGeometryService dependent on:
+--------------------------
+https://github.com/bjornharrtell/jsts/

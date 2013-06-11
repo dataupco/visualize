@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <title>Graph Example</title>
+    <!-- graph libs -->
+    <link rel="stylesheet" href="libs/graph/graphService.css" />
+    <script src="libs/graph/graphService.js"></script>
+    <script>
+      function ready() { 
+        var graphOptions = null;
+        /*{
+          graphId :'graph',
+          canvasId:'crumbs',
+          lineColor:'orange',
+          nodeColor:'blue',
+          textColor:'red',
+          bubbleColor:'green',
+          bubbleTextColor:'yellow',
+          blankImage:'images/nav/blank.jpg',
+          unknownImage:'images/nav/unknown.jpg'
+        };*/
+
+        var graph = graphService(graphOptions,function (id,done) {
+          var data = null;
+          if(id==undefined) {
+            data = graphData[0]; 
+          }
+          else {
+            for(var i=0;i<graphData.length;i++) {
+              if(graphData[i].id == id) {
+                data = graphData[i];
+                break;
+              }
+            }
+          }
+          done(data);
+        });
+        graph.showData();
+      }
+
+      var graphData = {};  
+    </script>
+    <script src="data/graph_data.json"></script>
+  </head>
+  <body onLoad="ready()">
+    <div align="center">
+      <span><canvas id="crumbs" width="120" height="450" class="crumbsCanvas" /></span>
+      <span><canvas id="graph" width="580" height="450" class="graphCanvas" /></span>
+    </div>
+    <div id="modalDialog" class="divModalDialog">
+       <div>
+          <nav>
+            <img id="image" src="" />
+            <ul id="relations">
+                <a href="#"><li>relation</li></a>
+            </ul>
+          </nav>
+          <span class="closeDialog"><a href="#">&nbsp;X&nbsp;</a></span>
+          <article>
+            <h1 id="title">title</h1>
+            <summary id="summary">summary</summary>
+            <section id="content">content</section>
+          </article>
+       </div>
+    </div>
+   <div id="loadingDialog" class="divModalDialog">
+       <div style="position: relative">
+          <h1 style="position:absolute;top:0;bottom:0;left:0;right:0;width:50%;height:40%;margin:auto;">Please Wait...<br /><br /><img src="images/nav/ajax-loader.gif" />
+       </div>
+   </div>
+  </body>
+</html>

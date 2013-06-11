@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <title>Map Example</title>
+    <!-- third party libs -->
+    <script src="libs/third/jsts/lib/javascript.util.js"></script>
+    <script src="libs/third/jsts/lib/jsts.js"></script>
+    <link rel="stylesheet" href="libs/third/leaflet/dist/leaflet.css" />
+    <script src="libs/third/leaflet/dist/leaflet.js"></script>
+    <!-- map libs -->
+    <link rel="stylesheet" href="libs/map/mapService.css" />
+    <script src="libs/map/mapService.js"></script>
+    <script src="libs/map/mapGeometryService.js"></script>
+    <script>
+      function ready() { 
+        var map = mapService('map'); 
+	var mapGeometry = mapGeometryService();
+	// show castle rock
+        map.moveTo({y:39.38,x:-104.86});
+	//map.locate();
+
+	var geoCallbacks = {
+	  filter : function(f) { 
+	    if(f.properties.name) {
+	      var featureName = f.properties.name.trim();
+              return featureName!='' && featureName!='NULL';
+	    } 
+	    return false;
+	  },
+	  content : function(f) {
+	    if(mapGeometry.hasGeometry(f)) {
+              return f.properties.name +
+	             '<br>Area: ' + mapGeometry.getFeatureArea(f) +
+	             '<br>Length: ' + mapGeometry.getFeatureLength(f);
+	    }
+            return f.properties.name;
+	  }
+	};
+
+	//geoCallbacks.style = function(f) { return { color:'yellow' }; };
+	//map.loadGeoJson(subdivisions,geoCallbacks);
+	//geoCallbacks.style = function(f) { return { color:'purple' }; };
+	//map.loadGeoJson(townFacilities,geoCallbacks);
+	geoCallbacks.style = function(f) { return { color:'green' }; };
+	map.loadGeoJson(trails,geoCallbacks);
+	geoCallbacks.style = function(f) { return { color:'blue' }; };
+	map.loadGeoJson(parks,geoCallbacks);
+	geoCallbacks.style = function(f) { return { color:'red' }; };
+	map.loadGeoJson(schools,geoCallbacks);
+
+      }
+
+      //var subdivisions = {};  
+      //var townFacilities = {};  
+      var trails = {};  
+      var parks = {};  
+      var schools = {};  
+    </script>
+    <!--<script src="data/subdivisions.json"></script>-->
+    <!--<script src="data/town_facilities.json"></script>-->
+    <script src="data/trails.json"></script>
+    <script src="data/parks.json"></script>
+    <script src="data/schools.json"></script>
+  </head>
+  <body onLoad="ready()">
+    <div id="map"></div>
+  </body>
+</html>
