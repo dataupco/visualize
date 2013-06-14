@@ -10,8 +10,8 @@ function graphService(options,findDataCallback) {
   settings.textColor = settings.textColor || 'yellow';
   settings.bubbleColor = settings.bubbleColor || 'yellow';
   settings.bubbleTextColor = settings.bubbleTextColor || 'red';
-  settings.blankImage = settings.blankImage || 'images/nav/blank.jpg';
-  settings.unknownImage = settings.unknownImage || 'images/nav/unknown.jpg';
+  settings.blankImage = settings.blankImage || 'libs/graph/images/nav/blank.jpg';
+  settings.unknownImage = settings.unknownImage || 'libs/graph/images/nav/unknown.jpg';
 
 
   var crumbs = [];
