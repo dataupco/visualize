@@ -2,11 +2,11 @@
   <head>
     <title>Graph Example</title>
     <!-- graph libs -->
-    <link rel="stylesheet" href="libs/graph/graphService.css" />
-    <script src="libs/graph/graphService.js"></script>
+    <link rel="stylesheet" href="../libs/graph/graphService.css" />
+    <script src="../libs/graph/graphService.js"></script>
     <script>
       function ready() { 
-        var graphOptions = null;
+        var graphOptions = { libPath : '..' };
         /*{
           graphId :'graph',
           canvasId:'crumbs',
@@ -15,8 +15,8 @@
           textColor:'red',
           bubbleColor:'green',
           bubbleTextColor:'yellow',
-          blankImage:'libs/graph/images/nav/blank.jpg',
-          unknownImage:'libs/graph/images/nav/unknown.jpg'
+          blankImage:'../libs/graph/images/nav/blank.jpg',
+          unknownImage:'../libs/graph/images/nav/unknown.jpg'
         };*/
 
         var graph = graphService(graphOptions,function (id,done) {
@@ -64,7 +64,7 @@
     </div>
    <div id="loadingDialog" class="divModalDialog">
        <div style="position: relative">
-          <h1 style="position:absolute;top:0;bottom:0;left:0;right:0;width:50%;height:40%;margin:auto;">Please Wait...<br /><br /><img src="images/nav/ajax-loader.gif" />
+          <h1 style="position:absolute;top:0;bottom:0;left:0;right:0;width:50%;height:40%;margin:auto;">Please Wait...<br /><br /><img src="images/ajax-loader.gif" />
        </div>
    </div>
   </body>

@@ -3,6 +3,7 @@ function graphService(options,findDataCallback) {
   var that = this;
 
   var settings = options || {};
+  settings.libPath = settings.libPath || '.';
   settings.graphId = settings.graphId || 'graph';
   settings.crumbsId = settings.crumbsId || 'crumbs';
   settings.lineColor = settings.lineColor || 'black';
@@ -10,8 +11,8 @@ function graphService(options,findDataCallback) {
   settings.textColor = settings.textColor || 'yellow';
   settings.bubbleColor = settings.bubbleColor || 'yellow';
   settings.bubbleTextColor = settings.bubbleTextColor || 'red';
-  settings.blankImage = settings.blankImage || 'libs/graph/images/nav/blank.jpg';
-  settings.unknownImage = settings.unknownImage || 'libs/graph/images/nav/unknown.jpg';
+  settings.blankImage = settings.blankImage || settings.libPath+'/libs/graph/images/nav/blank.jpg';
+  settings.unknownImage = settings.unknownImage || settings.libPath+'/libs/graph/images/nav/unknown.jpg';
 
 
   var crumbs = [];
